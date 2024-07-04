@@ -1,17 +1,14 @@
 import express from 'express';
-import { createRequire } from 'module'; 
-const require = createRequire(import.meta.url);
-try {
-  const users = require('./MOCK_DATA.json');
-} catch (error) {
-  console.error("Error importing MOCK_DATA.json:", error);
-}
+const users = require('./MOCK_DATA.json');
 
 const app = express();
-const PORT = 3000;
+const PORT = 8000;
 
 
 // routes
+app.get('/', (req, res) => {
+  res.console.log("this is home page");;
+});
 app.get('/users', (req, res) => {
   res.json(users);
 });
